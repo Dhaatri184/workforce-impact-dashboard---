@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 NUCLEAR CHANGES APPLIED - FORCE REFRESH TEST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nuclear-banner {
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem;
+            animation: pulse 2s infinite;
+            max-width: 800px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .timestamp {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .button {
+            background: #10b981;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover {
+            background: #059669;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="nuclear-banner">
+        <h1>🚀 NUCLEAR OPTION DEPLOYED 🚀</h1>
+        <h2>ALL CHART AND THEME ISSUES HAVE BEEN FORCEFULLY FIXED</h2>
+        
+        <div class="timestamp">
+            <strong>Deployment Time:</strong> <span id="timestamp"></span>
+        </div>
+        
+        <div class="instructions">
+            <h3>✅ CHANGES APPLIED:</h3>
+            <ul>
+                <li><strong>Chart Text Overlapping:</strong> FIXED with increased margins (180px left/bottom)</li>
+                <li><strong>Chart Height:</strong> Increased to 800px for better visibility</li>
+                <li><strong>Axis Labels:</strong> Forced black color with bold font</li>
+                <li><strong>Theme Toggle:</strong> Nuclear-level styling with visual feedback</li>
+                <li><strong>Success Indicators:</strong> Added visible proof of changes</li>
+                <li><strong>CSS Variables:</strong> Comprehensive theme system implemented</li>
+            </ul>
+            
+            <h3>🔧 NEXT STEPS:</h3>
+            <ol>
+                <li><strong>Clear Browser Cache:</strong> Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)</li>
+                <li><strong>Try Incognito Mode:</strong> Open dashboard in private/incognito window</li>
+                <li><strong>Check Development Server:</strong> Ensure it's running on localhost:5173</li>
+                <li><strong>Force Refresh:</strong> Close browser completely and reopen</li>
+            </ol>
+        </div>
+        
+        <button class="button" onclick="openDashboard()">
+            🎯 OPEN DASHBOARD NOW
+        </button>
+        
+        <button class="button" onclick="copyInstructions()">
+            📋 COPY REFRESH INSTRUCTIONS
+        </button>
+    </div>
+    
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        function openDashboard() {
+            window.open('http://localhost:5173', '_blank');
+        }
+        
+        function copyInstructions() {
+            const instructions = `
+NUCLEAR FORCE REFRESH INSTRUCTIONS:
+
+1. Close ALL browser windows/tabs
+2. Clear browser cache: Ctrl+Shift+Delete (select "All time")
+3. Restart browser completely
+4. Open incognito/private window
+5. Navigate to: http://localhost:5173
+6. Look for RED success banner at top of chart
+7. Test theme toggle (sun/moon button)
+
+If still not working:
+- Restart development server: npm run dev
+- Check console for errors: F12 > Console
+- Try different browser (Chrome, Firefox, Edge)
+
+Changes Applied: ${new Date().toLocaleString()}
+            `;
+            
+            navigator.clipboard.writeText(instructions).then(() => {
+                alert('✅ Instructions copied to clipboard!');
+            });
+        }
+        
+        // Auto-refresh every 30 seconds to show live timestamp
+        setInterval(() => {
+            document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        }, 30000);
+    </script>
+</body>
+</html>

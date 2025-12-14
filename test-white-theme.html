@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Theme Test - Workforce Impact Dashboard</title>
+    <link rel="stylesheet" href="src/index.css">
+    <link rel="stylesheet" href="src/App.css">
+    <link rel="stylesheet" href="src/components/Dashboard.css">
+    <link rel="stylesheet" href="src/styles/interactive.css">
+    <link rel="stylesheet" href="src/styles/accessibility.css">
+    <style>
+        /* Additional black theme enforcement */
+        body, html {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body style="background-color: #000000; color: #ffffff;">
+    <div class="App" style="background-color: #000000;">
+        <div class="App-header">
+            <h1>Workforce Impact Dashboard</h1>
+            <p>AI Growth vs Job Market Shift Analysis</p>
+            <p class="subtitle">Interactive dashboard for analyzing the impact of AI growth on job market dynamics</p>
+        </div>
+        
+        <main>
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <div class="header-content">
+                        <h1>AI Growth vs Job Market Shift</h1>
+                        <p class="header-subtitle">Interactive Workforce Impact Dashboard</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="dashboard-navigation">
+                        <div class="nav-controls">
+                            <div class="view-mode-selector">
+                                <button class="mode-button active">Overview</button>
+                                <button class="mode-button">Comparison</button>
+                                <button class="mode-button">Matrix</button>
+                            </div>
+                            <div class="display-controls">
+                                <button class="control-button">Export</button>
+                                <button class="control-button">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="content-card">
+                            <h3>Sample Content</h3>
+                            <p>This is a test to verify that the black theme is working correctly. The background should be black and the text should be white.</p>
+                            
+                            <div class="button-group">
+                                <button class="mode-button">Test Button 1</button>
+                                <button class="control-button">Test Button 2</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Improvements Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #8b5cf6 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* Time Range Demo Styles */
+        .time-slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .selected-period {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .period-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .period-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .period-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-left: 1.5rem;
+        }
+        
+        .period-dates {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #60a5fa;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .period-duration {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        
+        .time-presets {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+        
+        .presets-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .preset-button {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .preset-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+        
+        /* Chart Title Demo Styles */
+        .chart-title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .chart-main-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            justify-content: center;
+        }
+        
+        .title-icon {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        .chart-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-style: italic;
+            justify-content: center;
+        }
+        
+        .bubble-icon {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .before, .after {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid;
+        }
+        
+        .before {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .after {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .before .status-badge {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .after .status-badge {
+            background: #10b981;
+            color: white;
+        }
+        
+        .old-style {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-slider-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .chart-main-title {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">🎨 UI Improvements Demo</h1>
+        
+        <!-- Time Range Improvements -->
+        <div class="demo-section">
+            <h2>📅 Time Range Section - IMPROVED</h2>
+            
+            <div class="time-slider-header">
+                <div class="selected-period">
+                    <div class="period-info">
+                        <span class="period-label">📅 Analysis Period:</span>
+                        <div class="period-details">
+                            <span class="period-dates">Jan 1, 2022 - Dec 13, 2025</span>
+                            <span class="period-duration">(49 months)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="time-presets">
+                    <span class="presets-label">Quick Select:</span>
+                    <div class="preset-buttons">
+                        <button class="preset-button">6M</button>
+                        <button class="preset-button">1Y</button>
+                        <button class="preset-button">2Y</button>
+                        <button class="preset-button">3Y</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison">
+                <div class="before">
+                    <div class="status-badge">❌ BEFORE</div>
+                    <div class="old-style">SELECTED PERIOD: Jan 1, 2022 - Dec 13, 2025 (49 months)</div>
+                    <p>• Overlapping text</p>
+                    <p>• Poor spacing</p>
+                    <p>• No visual hierarchy</p>
+                </div>
+                
+                <div class="after">
+                    <div class="status-badge">✅ AFTER</div>
+                    <p>• Clean, organized layout</p>
+                    <p>• Proper visual hierarchy</p>
+                    <p>• Background containers</p>
+                    <p>• Better typography</p>
+                    <p>• Emoji icons for clarity</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chart Title Improvements -->
+        <div class="demo-section">
+            <h2>📊 Chart Title Section - IMPROVED</h2>
+            
+            <div class="chart-title-section">
+                <h3 class="chart-main-title">
+                    <span class="title-icon">🤖</span>
+                    AI Impact vs Job Market Analysis
+                    <span class="title-icon">💼</span>
+                </h3>
+                <p class="chart-subtitle">
+                    <span class="bubble-icon">⚪</span>
+                    Bubble size represents impact score magnitude
+                </p>
+            </div>
+            
+            <div class="comparison">
+                <div class="before">
+                    <div class="status-badge">❌ BEFORE</div>
+                    <div class="old-style">AI Impact vs Job Market Analysis</div>
+                    <div class="old-style">Bubble size represents impact score magnitude</div>
+                    <p>• Plain text title</p>
+                    <p>• No visual appeal</p>
+                    <p>• Unclear subtitle</p>
+                </div>
+                
+                <div class="after">
+                    <div class="status-badge">✅ AFTER</div>
+                    <p>• Visual icons (🤖💼)</p>
+                    <p>• Enhanced typography</p>
+                    <p>• Clear bubble icon (⚪)</p>
+                    <p>• Background container</p>
+                    <p>• Better visual hierarchy</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tour Button Status -->
+        <div class="demo-section">
+            <h2>🎯 Tour Button - FIXED</h2>
+            
+            <div class="comparison">
+                <div class="before">
+                    <div class="status-badge">❌ BEFORE</div>
+                    <p>• Two "Take a Tour" buttons</p>
+                    <p>• Confusing for users</p>
+                    <p>• Duplicate functionality</p>
+                </div>
+                
+                <div class="after">
+                    <div class="status-badge">✅ AFTER</div>
+                    <p>• Single movable tour button</p>
+                    <p>• Drag & drop functionality</p>
+                    <p>• User-adjustable position</p>
+                    <p>• Clean, professional UX</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p><strong>🌐 Main Dashboard:</strong> <a href="http://localhost:5173" style="color: #fbbf24;">http://localhost:5173</a></p>
+            <p><em>The development server should be running to see these changes in the main application.</em></p>
+        </div>
+    </div>
+</body>
+</html>

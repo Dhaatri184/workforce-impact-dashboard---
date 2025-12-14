@@ -1,0 +1,36 @@
+{
+  "projectName": "workforce-impact-dashboard",
+  "projectType": "react-typescript",
+  "version": "1.0.0",
+  "description": "AI Growth vs Job Market Shift Interactive Workforce Impact Dashboard",
+  "framework": "react",
+  "language": "typescript",
+  "buildTool": "vite",
+  "testFramework": "jest",
+  "propertyTestFramework": "fast-check",
+  "features": {
+    "specDrivenDevelopment": true,
+    "propertyBasedTesting": true,
+    "interactiveComponents": true,
+    "dataVisualization": true,
+    "apiIntegration": true
+  },
+  "competition": {
+    "name": "AI for Bharat",
+    "category": "Interactive Dashboard",
+    "requirements": {
+      "twoDataSources": true,
+      "interactiveDashboard": true,
+      "githubRepo": true,
+      "kiroDirectory": true,
+      "blogPost": true
+    }
+  },
+  "development": {
+    "startDate": "2024-12-10",
+    "methodology": "spec-driven",
+    "totalTasks": 17,
+    "completedTasks": 1,
+    "correctnessProperties": 17
+  }
+}

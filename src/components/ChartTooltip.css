@@ -1,0 +1,261 @@
+/* Chart Tooltip Styles */
+.chart-tooltip {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #1f2937;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.chart-tooltip.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tooltip-content {
+  padding: 1rem;
+}
+
+/* Header */
+.tooltip-header {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tooltip-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+
+/* Body */
+.tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tooltip-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.tooltip-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltip-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+}
+
+.tooltip-separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.tooltip-value {
+  color: white;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.estimated-indicator {
+  color: #fcd34d;
+  font-weight: 700;
+  font-size: 0.75rem;
+  cursor: help;
+}
+
+.confidence-indicator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+/* Insights Section */
+.tooltip-insights {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.insights-header {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.insight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.insight-bullet {
+  color: #3B82F6;
+  font-weight: 700;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.insight-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Metadata Section */
+.tooltip-metadata {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metadata-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.metadata-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+.metadata-value {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.metadata-value.quality-high {
+  color: #6ee7b7;
+}
+
+.metadata-value.quality-medium {
+  color: #fcd34d;
+}
+
+.metadata-value.quality-low {
+  color: #fca5a5;
+}
+
+/* Footer */
+.tooltip-footer {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.estimated-note {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chart-tooltip {
+    max-width: 280px;
+    font-size: 0.8rem;
+  }
+  
+  .tooltip-content {
+    padding: 0.75rem;
+  }
+  
+  .tooltip-item {
+    font-size: 0.8rem;
+  }
+  
+  .tooltip-color {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Animation Variants */
+.chart-tooltip.fade-in {
+  animation: tooltipFadeIn 150ms ease-out forwards;
+}
+
+.chart-tooltip.fade-out {
+  animation: tooltipFadeOut 100ms ease-in forwards;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tooltipFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5px) scale(0.98);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chart-tooltip {
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+  
+  .tooltip-color {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chart-tooltip {
+    transition: opacity 0ms, transform 0ms;
+  }
+  
+  .chart-tooltip.fade-in,
+  .chart-tooltip.fade-out {
+    animation: none;
+  }
+}

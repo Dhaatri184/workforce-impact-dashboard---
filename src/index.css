@@ -1,0 +1,196 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--button-secondary-bg) !important;
+  color: var(--text-primary) !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  border-color: var(--border-focus);
+  background-color: var(--bg-hover);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* COMPREHENSIVE THEME ENFORCEMENT */
+/* Force theme colors on all elements to ensure proper theme switching */
+
+* {
+  color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Override for specific text colors */
+.text-secondary,
+[class*="text-secondary"] {
+  color: var(--text-secondary) !important;
+}
+
+.text-tertiary,
+[class*="text-tertiary"] {
+  color: var(--text-tertiary) !important;
+}
+
+.text-inverse,
+[class*="text-inverse"] {
+  color: var(--text-inverse) !important;
+}
+
+.text-muted,
+[class*="text-muted"] {
+  color: var(--text-muted) !important;
+}
+
+/* Status colors override */
+.status-success,
+.risk-low,
+.metric-positive,
+.classification-growth,
+[class*="success"],
+[class*="positive"],
+[class*="growth"] {
+  color: var(--status-success) !important;
+}
+
+.status-warning,
+.risk-medium,
+.classification-transition,
+[class*="warning"],
+[class*="medium"],
+[class*="transition"] {
+  color: var(--status-warning) !important;
+}
+
+.status-error,
+.risk-high,
+.metric-negative,
+.classification-disruption,
+[class*="error"],
+[class*="negative"],
+[class*="disruption"] {
+  color: var(--status-error) !important;
+}
+
+/* Background enforcement */
+div, section, article, aside, main, header, footer, nav {
+  background-color: var(--bg-primary);
+}
+
+/* Card and elevated surfaces */
+[class*="card"],
+[class*="panel"],
+[class*="container"],
+[class*="elevated"],
+[class*="modal"],
+[class*="tooltip"] {
+  background-color: var(--bg-elevated) !important;
+  border-color: var(--border-primary) !important;
+}
+
+/* Interactive elements */
+button:not(.retry-button):not([class*="primary"]) {
+  background-color: var(--button-secondary-bg) !important;
+  border-color: var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+button:hover:not(.retry-button):not([class*="primary"]) {
+  background-color: var(--bg-hover) !important;
+  border-color: var(--border-focus) !important;
+}
+
+button[class*="primary"],
+button.active {
+  background-color: var(--interactive-primary) !important;
+  border-color: var(--interactive-primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+/* Input elements */
+input, textarea, select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--input-focus-border) !important;
+}
+
+/* Links */
+a {
+  color: var(--interactive-primary) !important;
+}
+
+a:hover {
+  color: var(--interactive-primary-hover) !important;
+}
+
+/* Ensure proper contrast in all themes */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* Clean index.css - no complex overrides */

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Growth vs Job Market Shift - Interactive Workforce Impact Dashboard</title>
+    <meta name="description" content="Interactive dashboard analyzing AI development growth impact on job market trends across different roles" />
+    <style>
+      /* Theme initialization */
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Default dark theme */
+      html, body {
+        background-color: #000000;
+        color: #ffffff;
+      }
+      
+      /* Light theme */
+      [data-theme="light"] html,
+      [data-theme="light"] body {
+        background-color: #ffffff;
+        color: #1f2937;
+      }
+    </style>
+    <script>
+      // Initialize theme immediately to prevent flash
+      (function() {
+        const savedTheme = localStorage.getItem('workforce-dashboard-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body.className = 'theme-' + savedTheme;
+        console.log('🎨 Theme initialized:', savedTheme);
+      })();
+    </script>
+  </head>
+  <body style="background-color: #000000; color: #ffffff; margin: 0; padding: 0;">
+    <div id="root" style="background-color: #000000; color: #ffffff; min-height: 100vh;"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

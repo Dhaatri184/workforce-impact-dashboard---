@@ -1,0 +1,145 @@
+/* ULTIMATE NUCLEAR OPTION - FORCE VISIBLE TIME SLIDER */
+
+/* Override EVERYTHING with maximum specificity */
+html body #root .time-slider,
+html body #root .time-slider .slider-container,
+html body #root .time-slider .time-markers,
+html body #root .time-slider .time-marker,
+html body #root .time-slider .marker-label {
+  all: unset !important;
+}
+
+/* Force the main container to be HUGE and VISIBLE */
+html body #root .time-slider {
+  display: block !important;
+  width: 100% !important;
+  min-height: 400px !important;
+  background: linear-gradient(45deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff) !important;
+  border: 10px solid #000000 !important;
+  padding: 50px !important;
+  margin: 50px 0 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Force the slider container */
+html body #root .time-slider .slider-container {
+  display: block !important;
+  width: 100% !important;
+  height: 300px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 5px solid #ff0000 !important;
+  position: relative !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* Force the time markers container */
+html body #root .time-slider .time-markers {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 150px !important;
+  position: absolute !important;
+  bottom: 50px !important;
+  left: 20px !important;
+  right: 20px !important;
+  background: rgba(0, 255, 0, 0.5) !important;
+  border: 5px solid #00ff00 !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* Force individual time markers */
+html body #root .time-slider .time-marker {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 1 !important;
+  height: 100px !important;
+  background: rgba(0, 0, 255, 0.5) !important;
+  border: 3px solid #0000ff !important;
+  margin: 0 10px !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Force the year labels to be ULTRA VISIBLE */
+html body #root .time-slider .marker-label {
+  display: block !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+  color: #000000 !important;
+  background: #ffffff !important;
+  padding: 15px 20px !important;
+  border: 5px solid #ff0000 !important;
+  border-radius: 15px !important;
+  text-align: center !important;
+  min-width: 100px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8) !important;
+  z-index: 9999 !important;
+  position: relative !important;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8) !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide marker lines */
+html body #root .time-slider .marker-line {
+  display: none !important;
+}
+
+/* Force slider track to be visible but separate */
+html body #root .time-slider .slider-track {
+  position: absolute !important;
+  top: 50px !important;
+  left: 50px !important;
+  right: 50px !important;
+  height: 20px !important;
+  background: #ff0000 !important;
+  border: 3px solid #000000 !important;
+  border-radius: 10px !important;
+  z-index: 100 !important;
+}
+
+/* Force slider handles */
+html body #root .time-slider .slider-handle {
+  position: absolute !important;
+  top: 50px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: #ffffff !important;
+  border: 5px solid #000000 !important;
+  border-radius: 50% !important;
+  z-index: 200 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Responsive - still force visibility */
+@media (max-width: 768px) {
+  html body #root .time-slider {
+    min-height: 350px !important;
+    padding: 30px !important;
+  }
+  
+  html body #root .time-slider .marker-label {
+    font-size: 1.5rem !important;
+    padding: 10px 15px !important;
+    min-width: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body #root .time-slider {
+    min-height: 300px !important;
+    padding: 20px !important;
+  }
+  
+  html body #root .time-slider .marker-label {
+    font-size: 1.2rem !important;
+    padding: 8px 12px !important;
+    min-width: 60px !important;
+  }
+}

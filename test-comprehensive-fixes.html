@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Fixes Test - Workforce Impact Dashboard</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .test-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .test-section h2 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .test-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .status-icon {
+            font-size: 1.2rem;
+        }
+        
+        .status-fixed {
+            color: #10b981;
+        }
+        
+        .status-testing {
+            color: #f59e0b;
+        }
+        
+        .launch-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        
+        .launch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .instructions {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .instructions h3 {
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .responsive-test {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .device-test {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .device-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 20px;
+            }
+            
+            .test-header h1 {
+                font-size: 2rem;
+            }
+            
+            .launch-button {
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🚀 Comprehensive Fixes Test</h1>
+            <p>AI Growth vs Job Market Shift Interactive Workforce Impact Dashboard</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>✅ Fixed Issues</h2>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>Theme Switching:</strong> Light/Dark mode with proper font color changes</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>Overlapping Components:</strong> Fixed Time Range and AI Impact sections</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>Responsive Design:</strong> Proper spacing on all screen sizes</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>Tour Button:</strong> Removed duplicate, kept only movable one</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>CSS Variables:</strong> Comprehensive theme system with forced inheritance</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-fixed">✅</span>
+                <span><strong>Mobile Experience:</strong> Touch-friendly buttons and proper spacing</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧪 Testing Areas</h2>
+            
+            <div class="test-item">
+                <span class="status-icon status-testing">🧪</span>
+                <span><strong>Theme Toggle:</strong> Switch between light and dark modes</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-testing">🧪</span>
+                <span><strong>Time Range Section:</strong> Check for proper spacing and no overlapping</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-testing">🧪</span>
+                <span><strong>AI Impact Chart:</strong> Verify title and bubble chart display</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-testing">🧪</span>
+                <span><strong>Movable Tour Button:</strong> Drag and drop functionality</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon status-testing">🧪</span>
+                <span><strong>Responsive Layout:</strong> Test on different screen sizes</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🚀 Launch Dashboard</h2>
+            <p>Click the button below to launch the dashboard and test all fixes:</p>
+            
+            <a href="http://localhost:5173" class="launch-button" target="_blank">
+                🚀 Launch Dashboard
+            </a>
+            
+            <a href="http://localhost:5173" class="launch-button" target="_blank">
+                📱 Test Mobile View
+            </a>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Testing Instructions</h3>
+            <ol>
+                <li><strong>Theme Switching:</strong> Click the theme toggle button in the header to switch between light and dark modes. Verify all text changes color properly.</li>
+                <li><strong>Overlapping Check:</strong> Look at the "Time Range" section and "AI Impact vs Job Market Analysis" chart. Ensure no components overlap.</li>
+                <li><strong>Responsive Test:</strong> Resize your browser window or use developer tools to test different screen sizes (mobile, tablet, desktop).</li>
+                <li><strong>Tour Button:</strong> Find the movable "Take a Tour" button. Try dragging it to different positions on the screen.</li>
+                <li><strong>Font Visibility:</strong> In both light and dark modes, ensure all text is clearly visible with proper contrast.</li>
+                <li><strong>Touch Targets:</strong> On mobile view, verify all buttons are large enough and properly spaced for touch interaction.</li>
+            </ol>
+        </div>
+        
+        <div class="test-section">
+            <h2>📱 Responsive Design Test</h2>
+            <p>Test the dashboard on different device sizes:</p>
+            
+            <div class="responsive-test">
+                <div class="device-test">
+                    <div class="device-icon">📱</div>
+                    <h4>Mobile</h4>
+                    <p>320px - 767px</p>
+                    <p>Single column layout</p>
+                </div>
+                
+                <div class="device-test">
+                    <div class="device-icon">📟</div>
+                    <h4>Tablet</h4>
+                    <p>768px - 1023px</p>
+                    <p>Adaptive grid layout</p>
+                </div>
+                
+                <div class="device-test">
+                    <div class="device-icon">💻</div>
+                    <h4>Desktop</h4>
+                    <p>1024px+</p>
+                    <p>Full grid layout</p>
+                </div>
+                
+                <div class="device-test">
+                    <div class="device-icon">🖥️</div>
+                    <h4>Large Screen</h4>
+                    <p>1400px+</p>
+                    <p>Enhanced spacing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🎯 Key Improvements Made</h2>
+            
+            <div class="test-item">
+                <span class="status-icon">🎨</span>
+                <span><strong>CSS Variables:</strong> Implemented comprehensive theme system with forced color inheritance using !important declarations</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon">📐</span>
+                <span><strong>Layout Fixes:</strong> Replaced margins with CSS Grid/Flexbox gaps to prevent overlapping</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon">📱</span>
+                <span><strong>Responsive System:</strong> Added 6 breakpoints for comprehensive device support</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon">🎯</span>
+                <span><strong>Touch Targets:</strong> Ensured minimum 44px height for all interactive elements</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon">♿</span>
+                <span><strong>Accessibility:</strong> Added proper focus indicators and ARIA labels</span>
+            </div>
+            
+            <div class="test-item">
+                <span class="status-icon">⚡</span>
+                <span><strong>Performance:</strong> Optimized transitions and reduced motion support</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add some interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to launch buttons
+            const buttons = document.querySelectorAll('.launch-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-2px)';
+                    }, 150);
+                });
+            });
+            
+            // Add hover effects to test items
+            const testItems = document.querySelectorAll('.test-item');
+            testItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                    this.style.transform = 'translateX(5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.05)';
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

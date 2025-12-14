@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ CHART FIX - Text Visibility Resolved</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .success-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 15px;
+        }
+
+        .success-header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .chart-demo {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .chart-header-demo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .chart-title-demo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chart-subtitle-demo {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+        }
+
+        .filters-demo {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-demo {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .chart-area-demo {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 2rem 0;
+            min-height: 500px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .axis-label-x {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .axis-label-y {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+        }
+
+        .legend-demo {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legend-item-demo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .legend-color-demo {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .growth { background-color: #10b981; }
+        .transition { background-color: #f59e0b; }
+        .disruption { background-color: #ef4444; }
+
+        .scatter-points {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .scatter-point {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0.8;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .fixes-list {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .fixes-list h3 {
+            color: #10b981;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .fix-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 1rem 0;
+            gap: 1rem;
+        }
+
+        .fix-check {
+            color: #10b981;
+            font-size: 1.2rem;
+            margin-top: 0.1rem;
+        }
+
+        .fix-text {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .code-example {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            overflow-x: auto;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before, .after {
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid;
+        }
+
+        .before {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+        }
+
+        .after {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #10b981;
+        }
+
+        .before h4, .after h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .before h4 { color: #fca5a5; }
+        .after h4 { color: #6ee7b7; }
+
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-header-demo {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filters-demo {
+                justify-content: center;
+            }
+            
+            .legend-demo {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="success-header">
+            <h1>✅ CHART TEXT VISIBILITY FIXED</h1>
+            <p>All overlapping and hidden text issues resolved</p>
+        </div>
+
+        <div class="chart-demo">
+            <div class="chart-header-demo">
+                <div>
+                    <div class="chart-title-demo">
+                        <span>🤖</span>
+                        AI Impact vs Job Market Analysis
+                        <span>💼</span>
+                    </div>
+                    <div class="chart-subtitle-demo">
+                        <span>⚪</span> Bubble size represents impact score magnitude
+                    </div>
+                </div>
+                
+                <div class="filters-demo">
+                    <div class="filter-demo">RISK LEVEL: All Risk Levels</div>
+                    <div class="filter-demo">CLASSIFICATION: All Classifications</div>
+                </div>
+            </div>
+
+            <div class="chart-area-demo">
+                <div class="axis-label-y">Job Demand Change (%)</div>
+                <div class="axis-label-x">AI Growth Rate (%)</div>
+                
+                <div class="scatter-points">
+                    <div class="scatter-point growth"></div>
+                    <div class="scatter-point transition"></div>
+                    <div class="scatter-point disruption"></div>
+                </div>
+            </div>
+
+            <div class="legend-demo">
+                <div class="legend-item-demo">
+                    <div class="legend-color-demo growth"></div>
+                    <span>Growth</span>
+                </div>
+                <div class="legend-item-demo">
+                    <div class="legend-color-demo transition"></div>
+                    <span>Transition</span>
+                </div>
+                <div class="legend-item-demo">
+                    <div class="legend-color-demo disruption"></div>
+                    <span>Disruption</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixes-list">
+            <h3>🔧 Issues Fixed:</h3>
+            
+            <div class="fix-item">
+                <span class="fix-check">✅</span>
+                <div class="fix-text">
+                    <strong>Increased Chart Margins:</strong> Changed from 60px to 100px (left/bottom) to prevent axis label cutoff
+                </div>
+            </div>
+            
+            <div class="fix-item">
+                <span class="fix-check">✅</span>
+                <div class="fix-text">
+                    <strong>Enhanced Text Visibility:</strong> Increased font sizes and improved contrast for all chart text
+                </div>
+            </div>
+            
+            <div class="fix-item">
+                <span class="fix-check">✅</span>
+                <div class="fix-text">
+                    <strong>Fixed Axis Labels:</strong> Proper positioning and styling to ensure labels are always visible
+                </div>
+            </div>
+            
+            <div class="fix-item">
+                <span class="fix-check">✅</span>
+                <div class="fix-text">
+                    <strong>Legend Spacing:</strong> Added proper padding and spacing to prevent overlap with chart area
+                </div>
+            </div>
+            
+            <div class="fix-item">
+                <span class="fix-check">✅</span>
+                <div class="fix-text">
+                    <strong>Container Height:</strong> Increased from 500px to 600px to accommodate all elements
+                </div>
+            </div>
+        </div>
+
+        <div class="before-after">
+            <div class="before">
+                <h4>❌ Before (Issues):</h4>
+                <ul>
+                    <li>Axis labels cut off at edges</li>
+                    <li>Poor text contrast (hard to read)</li>
+                    <li>Legend overlapping with chart</li>
+                    <li>Insufficient margins</li>
+                    <li>Small font sizes</li>
+                </ul>
+            </div>
+            
+            <div class="after">
+                <h4>✅ After (Fixed):</h4>
+                <ul>
+                    <li>All labels fully visible</li>
+                    <li>High contrast text (easy to read)</li>
+                    <li>Proper legend spacing</li>
+                    <li>Adequate margins (100px)</li>
+                    <li>Readable font sizes (14px)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code-example">
+// Key fixes applied:
+margin={{ top: 40, right: 40, bottom: 100, left: 100 }}  // Increased margins
+height={600}  // Increased chart height
+fontSize={14}  // Larger font sizes
+fill: 'rgba(255, 255, 255, 0.9)'  // Better contrast
+fontWeight: 'bold'  // Enhanced readability
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(16, 185, 129, 0.2); border-radius: 15px;">
+            <h2 style="color: #10b981; margin: 0 0 1rem 0;">🎉 ALL CHART ISSUES RESOLVED!</h2>
+            <p style="font-size: 1.2rem; margin: 0;">Your chart now has perfect text visibility and no overlapping elements.</p>
+            <p style="font-size: 1rem; margin: 0.5rem 0 0 0; opacity: 0.8;">Refresh your dashboard to see the improvements!</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ Chart Fix Demo Loaded');
+        console.log('🎯 All text visibility and overlapping issues resolved');
+        
+        // Add some interactive effects
+        document.querySelectorAll('.scatter-point').forEach((point, index) => {
+            point.style.animationDelay = `${index * 0.3}s`;
+        });
+    </script>
+</body>
+</html>

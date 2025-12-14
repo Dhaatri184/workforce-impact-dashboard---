@@ -1,0 +1,357 @@
+/* Demo Mode Selector Styles */
+
+.demo-mode-selector {
+  position: relative;
+  z-index: 100;
+}
+
+.demo-trigger {
+  position: relative;
+}
+
+.demo-mode-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.demo-mode-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.demo-chevron {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.demo-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.demo-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  min-width: 400px;
+  max-width: 500px;
+  z-index: 101;
+  animation: demo-dropdown-appear 0.2s ease-out;
+}
+
+@keyframes demo-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.demo-dropdown-header {
+  padding: 20px 20px 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.demo-dropdown-header h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.demo-dropdown-header p {
+  margin: 0;
+  font-size: 14px;
+  color: #718096;
+}
+
+.demo-scenarios {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-scenario-button {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.demo-scenario-button:hover {
+  border-color: #667eea;
+  background: #f0f4ff;
+  transform: translateY(-1px);
+}
+
+.scenario-content h5 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.scenario-content p {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  color: #718096;
+  line-height: 1.4;
+}
+
+.scenario-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.highlight-tag {
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.demo-dropdown-footer {
+  padding: 16px 20px 20px 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.demo-quick-start {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.demo-quick-start:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.demo-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+/* Active Demo Mode */
+.demo-mode-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.demo-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.demo-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-pulse {
+  color: #48bb78;
+  animation: demo-pulse 2s infinite;
+}
+
+@keyframes demo-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.demo-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.current-scenario {
+  flex: 1;
+  margin: 0 16px;
+}
+
+.scenario-selector {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+}
+
+.scenario-selector option {
+  background: #2d3748;
+  color: white;
+}
+
+.demo-stop-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demo-stop-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.scenario-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 12px;
+}
+
+.scenario-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.scenario-details p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.scenario-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.highlight-bullet {
+  color: #48bb78;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .demo-dropdown {
+    min-width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+    right: -20px;
+  }
+  
+  .demo-status {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .current-scenario {
+    margin: 0;
+  }
+  
+  .scenario-selector {
+    max-width: none;
+  }
+  
+  .scenario-highlights {
+    flex-direction: column;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .demo-mode-button {
+    background: #000;
+    border: 2px solid #fff;
+  }
+  
+  .demo-dropdown {
+    border: 2px solid #000;
+  }
+  
+  .demo-scenario-button:hover {
+    border-color: #000;
+    background: #f0f0f0;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .demo-dropdown {
+    animation: none;
+  }
+  
+  .demo-pulse {
+    animation: none;
+  }
+  
+  .demo-mode-button:hover,
+  .demo-scenario-button:hover {
+    transform: none;
+  }
+}
+
+/* Focus Styles */
+.demo-mode-button:focus-visible,
+.demo-scenario-button:focus-visible,
+.demo-quick-start:focus-visible,
+.demo-stop-button:focus-visible,
+.scenario-selector:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}

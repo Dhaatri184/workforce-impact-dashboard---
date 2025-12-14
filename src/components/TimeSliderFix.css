@@ -1,0 +1,282 @@
+/* ULTRA AGGRESSIVE FIX FOR OVERLAPPING TIME SLIDER ISSUE */
+
+/* Force override all existing styles with maximum specificity */
+.time-slider .slider-container,
+.time-slider .slider-container * {
+  position: relative !important;
+  height: 200px !important; /* Even larger height */
+  margin: 4rem 0 !important; /* Huge margins */
+  padding: 0 50px !important; /* Much more padding */
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* COMPLETELY OVERRIDE time markers layout */
+.time-slider .time-markers {
+  position: absolute !important;
+  top: 60px !important; /* Move markers down */
+  left: 50px !important;
+  right: 50px !important;
+  height: 80px !important;
+  pointer-events: none !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  background: rgba(255, 0, 0, 0.1) !important; /* Debug background */
+}
+
+/* FORCE individual time marker styling with maximum separation */
+.time-slider .time-marker {
+  position: relative !important; /* Change from absolute to relative */
+  top: auto !important;
+  left: auto !important;
+  height: 80px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  min-width: 120px !important; /* Much wider minimum width */
+  max-width: 120px !important; /* Limit maximum width */
+  flex: 1 !important; /* Equal distribution */
+  margin: 0 10px !important; /* Force margin between markers */
+  background: rgba(0, 255, 0, 0.1) !important; /* Debug background */
+}
+
+/* Force marker line styling */
+.time-slider .marker-line {
+  width: 3px !important;
+  height: 30px !important;
+  background-color: var(--interactive-primary) !important;
+  margin-bottom: 1.5rem !important;
+  border-radius: 2px !important;
+}
+
+/* ULTRA VISIBLE marker labels with maximum separation */
+.time-slider .marker-label {
+  font-size: 1.1rem !important;
+  font-weight: 900 !important;
+  color: #000000 !important; /* Force black text */
+  white-space: nowrap !important;
+  transform: none !important; /* Remove transform */
+  background-color: #ffffff !important; /* Force white background */
+  padding: 0.75rem 1rem !important;
+  border-radius: 12px !important;
+  border: 3px solid #3b82f6 !important; /* Force blue border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  min-width: 80px !important;
+  max-width: 100px !important;
+  text-align: center !important;
+  z-index: 100 !important;
+  position: relative !important;
+  margin-top: 10px !important;
+  display: block !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* MOVE slider track way up to avoid labels */
+.time-slider .slider-track {
+  position: absolute !important;
+  top: 30px !important; /* Move way up */
+  left: 50px !important;
+  right: 50px !important;
+  height: 15px !important; /* Thicker track */
+  background-color: #e5e7eb !important; /* Force gray background */
+  border: 3px solid #3b82f6 !important; /* Force blue border */
+  border-radius: 10px !important;
+  transform: none !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2) !important;
+  z-index: 2 !important;
+}
+
+/* Force selected range styling */
+.time-slider .selected-range {
+  position: absolute !important;
+  top: 0 !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, var(--interactive-primary), #8b5cf6) !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4) !important;
+  z-index: 3 !important;
+}
+
+/* FORCE slider handle positioning to match track */
+.time-slider .slider-handle {
+  position: absolute !important;
+  top: 30px !important; /* Match track position exactly */
+  width: 28px !important;
+  height: 28px !important;
+  background-color: #ffffff !important; /* Force white */
+  border: 4px solid #3b82f6 !important; /* Force blue border */
+  border-radius: 50% !important;
+  cursor: grab !important;
+  transform: translate(-50%, -50%) !important;
+  transition: all 0.2s ease !important;
+  z-index: 50 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.time-slider .slider-handle:hover,
+.time-slider .slider-handle.dragging {
+  width: 28px !important;
+  height: 28px !important;
+  border-width: 5px !important;
+  cursor: grabbing !important;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5) !important;
+  transform: translate(-50%, -50%) scale(1.1) !important;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .time-slider .slider-container {
+    height: 130px !important;
+    margin: 2rem 0 !important;
+    padding: 0 20px !important;
+  }
+  
+  .time-slider .time-markers {
+    left: 20px !important;
+    right: 20px !important;
+  }
+  
+  .time-slider .marker-label {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.6rem !important;
+    min-width: 50px !important;
+  }
+  
+  .time-slider .slider-track {
+    left: 20px !important;
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-slider .slider-container {
+    height: 120px !important;
+    margin: 1.5rem 0 !important;
+    padding: 0 15px !important;
+  }
+  
+  .time-slider .time-markers {
+    left: 15px !important;
+    right: 15px !important;
+  }
+  
+  .time-slider .marker-label {
+    font-size: 0.75rem !important;
+    padding: 0.3rem 0.5rem !important;
+    min-width: 45px !important;
+  }
+  
+  .time-slider .slider-track {
+    left: 15px !important;
+    right: 15px !important;
+    height: 10px !important;
+  }
+  
+  .time-slider .slider-handle {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .time-slider .slider-handle:hover,
+  .time-slider .slider-handle.dragging {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* Theme-specific overrides */
+[data-theme="light"] .time-slider .marker-line {
+  background-color: var(--interactive-primary) !important;
+}
+
+[data-theme="dark"] .time-slider .marker-line {
+  background-color: var(--interactive-primary) !important;
+}
+
+/* Ensure no overlapping by forcing proper stacking */
+.time-slider .time-markers {
+  z-index: 1 !important;
+}
+
+.time-slider .slider-track {
+  z-index: 2 !important;
+}
+
+.time-slider .selected-range {
+  z-index: 3 !important;
+}
+
+.time-slider .slider-handle {
+  z-index: 20 !important;
+}
+
+.time-slider .marker-label {
+  z-index: 10 !important;
+}
+
+/* Force visibility */
+.time-slider {
+  overflow: visible !important;
+}
+
+.time-slider * {
+  overflow: visible !important;
+}
+
+/* CRITICAL: Force exactly 4 markers with fixed positions */
+.time-slider .time-marker:nth-child(1) {
+  left: 0% !important;
+  position: absolute !important;
+}
+
+.time-slider .time-marker:nth-child(2) {
+  left: 33% !important;
+  position: absolute !important;
+}
+
+.time-slider .time-marker:nth-child(3) {
+  left: 66% !important;
+  position: absolute !important;
+}
+
+.time-slider .time-marker:nth-child(4) {
+  left: 100% !important;
+  position: absolute !important;
+  transform: translateX(-100%) !important; /* Align right edge */
+}
+
+/* HIDE any extra markers beyond 4 */
+.time-slider .time-marker:nth-child(n+5) {
+  display: none !important;
+}
+
+/* FORCE container to be large enough */
+.time-slider {
+  min-height: 250px !important;
+  padding: 2rem !important;
+  margin: 2rem 0 !important;
+}
+
+/* DEBUG: Add visible borders to see the layout */
+.time-slider .slider-container {
+  border: 2px dashed #ff0000 !important;
+  background: rgba(255, 255, 0, 0.1) !important;
+}
+
+.time-slider .time-markers {
+  border: 2px dashed #00ff00 !important;
+}
+
+.time-slider .time-marker {
+  border: 2px dashed #0000ff !important;
+}
+
+/* FORCE text to be readable */
+.time-slider .marker-label {
+  font-family: Arial, sans-serif !important;
+  letter-spacing: 1px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+}

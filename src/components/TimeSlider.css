@@ -1,0 +1,574 @@
+/* Time Slider Styles - Theme Aware */
+.time-slider {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--bg-elevated);
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.time-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 0; /* Remove margin to use gap from parent */
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-secondary);
+  min-height: 140px; /* Increased to prevent overlapping */
+  box-shadow: var(--shadow-md);
+}
+
+.selected-period {
+  flex: 1;
+  min-width: 250px;
+}
+
+.period-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.period-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.period-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-left: 1.5rem;
+  padding: 1rem 0;
+  min-height: 80px; /* Ensure minimum height to prevent overlapping */
+}
+
+.period-dates {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--interactive-primary) !important;
+  text-shadow: none;
+}
+
+.period-duration {
+  font-size: 0.85rem;
+  color: var(--text-secondary) !important;
+  font-style: italic;
+}
+
+.time-presets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+  min-width: 200px; /* Ensure minimum width to prevent overlapping */
+}
+
+.presets-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 48px; /* Ensure minimum height for touch targets */
+}
+
+.preset-button {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--button-secondary-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  color: var(--text-primary) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preset-button:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--interactive-primary);
+  color: var(--text-primary) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* EMERGENCY OVERRIDE - Slider Container */
+.slider-container {
+  position: relative !important;
+  height: 200px !important; /* Much larger height */
+  margin: 4rem 0 !important; /* Huge margins */
+  padding: 0 50px !important; /* Much more padding */
+  background: rgba(255, 255, 0, 0.2) !important; /* Debug background */
+  border: 3px dashed red !important; /* Debug border */
+}
+
+/* EMERGENCY OVERRIDE - Time Markers */
+.time-markers {
+  position: absolute !important;
+  top: 100px !important; /* Move way down */
+  left: 50px !important;
+  right: 50px !important;
+  height: 80px !important;
+  pointer-events: none !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  background: rgba(0, 255, 0, 0.2) !important; /* Debug background */
+  border: 3px dashed green !important; /* Debug border */
+}
+
+.time-marker {
+  position: relative !important; /* Change to relative */
+  top: auto !important;
+  left: auto !important;
+  height: 80px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+  flex: 1 !important;
+  background: rgba(0, 0, 255, 0.2) !important; /* Debug background */
+  border: 2px dashed blue !important; /* Debug border */
+}
+
+.marker-line {
+  width: 2px; /* Slightly thicker for better visibility */
+  height: 25px; /* Increased height */
+  background-color: var(--border-secondary);
+  margin-bottom: 1rem; /* Increased margin to separate from labels */
+}
+
+.marker-label {
+  font-size: 1.2rem !important;
+  font-weight: 900 !important;
+  color: #000000 !important; /* Force black text */
+  white-space: nowrap !important;
+  transform: none !important;
+  background-color: #ffffff !important; /* Force white background */
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  border: 3px solid #ff0000 !important; /* Force red border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  min-width: 80px !important;
+  text-align: center !important;
+  z-index: 100 !important;
+  margin-top: 10px !important;
+}
+
+/* EMERGENCY OVERRIDE - Slider Track */
+.slider-track {
+  position: absolute !important;
+  top: 50px !important; /* Move way up */
+  left: 50px !important;
+  right: 50px !important;
+  height: 15px !important;
+  background-color: #cccccc !important; /* Force gray */
+  border: 3px solid #000000 !important; /* Force black border */
+  border-radius: 10px !important;
+  transform: none !important;
+  z-index: 10 !important;
+}
+
+.selected-range {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--interactive-primary), #8b5cf6);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Slider Handles - Positioned to Match Track */
+.slider-handle {
+  position: absolute;
+  top: 35%; /* Match the track position */
+  width: 22px;
+  height: 22px;
+  background-color: var(--bg-elevated);
+  border: 3px solid var(--interactive-primary);
+  border-radius: 50%;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+  z-index: 15;
+  box-shadow: var(--shadow-md);
+}
+
+.slider-handle:hover,
+.slider-handle.dragging {
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
+  cursor: grabbing;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.slider-handle:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+}
+
+.start-handle {
+  border-color: #6366f1;
+}
+
+.end-handle {
+  border-color: #8b5cf6;
+}
+
+/* Handle Tooltips */
+.handle-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.handle-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.slider-handle:hover .handle-tooltip,
+.slider-handle.dragging .handle-tooltip {
+  opacity: 1;
+}
+
+/* Validation Warning */
+.validation-warning {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 6px;
+  color: #fcd34d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .time-slider {
+    padding: 0.75rem;
+  }
+  
+  .time-slider-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1rem;
+    min-height: auto; /* Allow natural height on mobile */
+  }
+  
+  .selected-period {
+    min-width: auto;
+    order: 1;
+  }
+  
+  .period-details {
+    margin-left: 0;
+    padding: 0.75rem 0;
+    min-height: auto;
+  }
+  
+  .period-dates {
+    font-size: 1rem;
+  }
+  
+  .time-presets {
+    align-items: stretch;
+    min-width: auto;
+    order: 2;
+  }
+  
+  .preset-buttons {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .preset-button {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .slider-container {
+    height: 100px; /* Reduced but still adequate for mobile */
+    margin: 1.5rem 0;
+    padding: 0 10px; /* Reduced padding for mobile */
+  }
+  
+  .marker-label {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+    min-width: 40px;
+  }
+  
+  .slider-handle {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .slider-handle:hover,
+  .slider-handle.dragging {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .slider-track {
+    left: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .period-dates {
+    font-size: 1rem;
+  }
+  
+  .time-presets {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+  }
+  
+  .handle-tooltip {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* ADDITIONAL FIXES FOR OVERLAPPING YEARS */
+
+/* Ensure time markers are properly spaced */
+.time-markers {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  height: 100%;
+  padding: 0 20px;
+}
+
+/* Override absolute positioning for better distribution */
+.time-marker:first-child {
+  left: 0 !important;
+}
+
+.time-marker:last-child {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Ensure labels don't overlap by adding minimum spacing */
+.time-marker + .time-marker {
+  margin-left: 60px;
+}
+
+/* Better label positioning */
+.marker-label {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+/* Prevent label cutoff */
+.time-slider {
+  overflow: visible;
+}
+
+.slider-container {
+  overflow: visible;
+}
+
+/* Enhanced responsive behavior for overlapping prevention */
+@media (max-width: 600px) {
+  .time-marker {
+    min-width: 50px;
+  }
+  
+  .time-marker + .time-marker {
+    margin-left: 50px;
+  }
+  
+  .marker-label {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.3rem;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 400px) {
+  .time-marker {
+    min-width: 40px;
+  }
+  
+  .time-marker + .time-marker {
+    margin-left: 40px;
+  }
+  
+  .marker-label {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.25rem;
+    min-width: 30px;
+  }
+  
+  .slider-container {
+    height: 90px;
+    padding: 0 5px;
+  }
+}
+
+/* Fix for theme-aware marker styling */
+[data-theme="light"] .marker-line {
+  background-color: var(--border-primary);
+}
+
+[data-theme="dark"] .marker-line {
+  background-color: var(--border-secondary);
+}
+
+/* Ensure proper z-index stacking */
+.time-markers {
+  z-index: 1;
+}
+
+.slider-track {
+  z-index: 2;
+}
+
+.selected-range {
+  z-index: 3;
+}
+
+.slider-handle {
+  z-index: 15;
+}
+
+.marker-label {
+  z-index: 5;
+}
+
+/* ========================================= */
+/* ULTRA AGGRESSIVE OVERRIDE - FORCE VISIBLE */
+/* ========================================= */
+
+.time-slider {
+  min-height: 300px !important;
+  background: rgba(255, 255, 0, 0.3) !important;
+  border: 5px solid red !important;
+  padding: 2rem !important;
+  margin: 3rem 0 !important;
+}
+
+.time-slider .slider-container {
+  height: 250px !important;
+  background: rgba(255, 0, 255, 0.2) !important;
+  border: 4px solid purple !important;
+}
+
+.time-slider .time-markers {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  position: absolute !important;
+  top: 120px !important;
+  left: 50px !important;
+  right: 50px !important;
+  height: 100px !important;
+  background: rgba(0, 255, 255, 0.3) !important;
+  border: 4px solid cyan !important;
+}
+
+.time-slider .time-marker {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  flex: 1 !important;
+  background: rgba(255, 165, 0, 0.3) !important;
+  border: 3px solid orange !important;
+  padding: 10px !important;
+}
+
+.time-slider .marker-label {
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+  color: #000000 !important;
+  background: #ffffff !important;
+  padding: 1rem !important;
+  border: 4px solid #ff0000 !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  min-width: 80px !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+}
+
+.time-slider .slider-track {
+  top: 60px !important;
+  height: 20px !important;
+  background: #ff0000 !important;
+  border: 4px solid #000000 !important;
+}
+
+.time-slider .slider-handle {
+  top: 60px !important;
+  width: 30px !important;
+  height: 30px !important;
+  background: #ffffff !important;
+  border: 5px solid #ff0000 !important;
+  z-index: 1001 !important;
+}
+
+/* Hide the old dynamic generation function result */
+.time-slider .time-marker[style*="left"] {
+  display: none !important;
+}
+
+/* Force our hardcoded markers to be visible */
+.time-slider .time-markers > .time-marker:nth-child(1),
+.time-slider .time-markers > .time-marker:nth-child(2),
+.time-slider .time-markers > .time-marker:nth-child(3),
+.time-slider .time-markers > .time-marker:nth-child(4) {
+  display: flex !important;
+  position: relative !important;
+}

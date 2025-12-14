@@ -1,0 +1,139 @@
+MIT License
+
+Copyright (c) 2024 Workforce Impact Dashboard Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Third-Party Licenses
+
+This project includes third-party software components with their own licenses:
+
+### React (MIT License)
+Copyright (c) Facebook, Inc. and its affiliates.
+https://github.com/facebook/react/blob/main/LICENSE
+
+### TypeScript (Apache License 2.0)
+Copyright (c) Microsoft Corporation.
+https://github.com/microsoft/TypeScript/blob/main/LICENSE.txt
+
+### Vite (MIT License)
+Copyright (c) 2019-present, Yuxi (Evan) You and Vite contributors.
+https://github.com/vitejs/vite/blob/main/LICENSE
+
+### Recharts (MIT License)
+Copyright (c) 2015-present Recharts Group.
+https://github.com/recharts/recharts/blob/master/LICENSE
+
+### date-fns (MIT License)
+Copyright (c) 2021 Sasha Koss and Lesha Koss.
+https://github.com/date-fns/date-fns/blob/master/LICENSE.md
+
+### Axios (MIT License)
+Copyright (c) 2014-present Matt Zabriskie.
+https://github.com/axios/axios/blob/master/LICENSE
+
+### Jest (MIT License)
+Copyright (c) Facebook, Inc. and its affiliates.
+https://github.com/facebook/jest/blob/main/LICENSE
+
+### fast-check (MIT License)
+Copyright (c) 2017-present Nicolas DUBIEN.
+https://github.com/dubzzz/fast-check/blob/main/LICENSE
+
+### ESLint (MIT License)
+Copyright JS Foundation and other contributors.
+https://github.com/eslint/eslint/blob/main/LICENSE
+
+### Prettier (MIT License)
+Copyright © James Long and contributors.
+https://github.com/prettier/prettier/blob/main/LICENSE
+
+---
+
+## Data Sources Attribution
+
+This project integrates with external data sources:
+
+### GitHub API
+- **Service**: GitHub REST API v3
+- **Terms**: https://docs.github.com/en/github/site-policy/github-terms-of-service
+- **Rate Limits**: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
+- **Attribution**: Data provided by GitHub, Inc.
+
+### Job Market APIs
+- **Indeed API**: Subject to Indeed's Terms of Service
+- **LinkedIn API**: Subject to LinkedIn's Developer Agreement
+- **Government Data**: Public domain where applicable
+
+---
+
+## Trademark Notice
+
+"Workforce Impact Dashboard" and associated logos are trademarks of the project maintainers.
+
+Third-party trademarks mentioned in this project are the property of their respective owners:
+- GitHub® is a registered trademark of GitHub, Inc.
+- React® is a registered trademark of Facebook, Inc.
+- TypeScript® is a registered trademark of Microsoft Corporation.
+
+---
+
+## Patent Notice
+
+This project does not contain any patented technology. All algorithms and methods used are either:
+- Original implementations by the contributors
+- Based on publicly available research and documentation
+- Derived from open-source libraries with compatible licenses
+
+---
+
+## Export Control Notice
+
+This software may be subject to export control laws and regulations. Users are responsible for compliance with applicable export control laws when distributing or using this software internationally.
+
+---
+
+## Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This software is provided for informational and educational purposes only. The data and analysis provided should not be considered as professional career advice, investment advice, or business recommendations. Users should conduct their own research and consult with qualified professionals before making career or business decisions based on the information provided by this software.
+
+---
+
+## Contact Information
+
+For licensing questions or concerns, please contact:
+- **Email**: legal@yourdomain.com
+- **GitHub Issues**: https://github.com/your-org/workforce-impact-dashboard/issues
+- **Project Maintainers**: See CONTRIBUTORS.md
+
+---
+
+## License Compatibility
+
+This MIT license is compatible with:
+- Apache License 2.0
+- BSD licenses (2-clause and 3-clause)
+- ISC License
+- Other MIT-licensed projects
+
+For commercial use, integration, or redistribution questions, please review the full license terms above or contact the project maintainers.

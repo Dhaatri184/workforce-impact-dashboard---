@@ -1,0 +1,191 @@
+.App {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme-aware text colors */
+.App * {
+  color: var(--text-primary);
+}
+
+/* Theme-aware background colors */
+.App div {
+  background-color: var(--bg-primary);
+}
+
+/* Card and container backgrounds */
+.App .main-content,
+.App .content-card,
+.App .chart-container,
+.App .nav-controls,
+.App .dashboard-header,
+.App .App-header {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-primary);
+}
+
+/* Button states */
+.App .mode-button.active {
+  color: var(--text-inverse);
+  background-color: var(--interactive-primary);
+}
+
+.App .retry-button {
+  color: var(--text-inverse);
+  background-color: var(--status-error);
+}
+
+/* Status colors - theme aware */
+.App .risk-badge.risk-high,
+.App .metric-value.negative,
+.App .classification-value.disruption {
+  color: var(--status-error);
+}
+
+.App .risk-badge.risk-medium,
+.App .classification-value.transition {
+  color: var(--status-warning);
+}
+
+.App .risk-badge.risk-low,
+.App .metric-value.positive,
+.App .classification-value.growth {
+  color: var(--status-success);
+}
+
+.App-header {
+  padding: 2rem;
+  text-align: center;
+  background: #1a1a1a !important;
+  border-bottom: 1px solid #333333;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+
+.App-header p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #cccccc !important;
+}
+
+.subtitle {
+  font-size: 1rem !important;
+  color: #cccccc !important;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main {
+  padding: 2rem;
+}
+
+.dashboard-placeholder {
+  background: #1a1a1a !important;
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  border: 1px solid #333333;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-placeholder p {
+  font-size: 1.1rem;
+  color: #ffffff !important;
+}
+
+/* Theme-aware component styling */
+.App .dashboard-content,
+.App .main-content,
+.App .content-card,
+.App .chart-container,
+.App .nav-controls,
+.App .dashboard-header,
+.App .App-header,
+.App .dashboard-navigation,
+.App .dashboard-overview,
+.App .charts-section,
+.App .analysis-section,
+.App .insight-item,
+.App .metric,
+.App .classification,
+.App .overview-card,
+.App .loading-placeholder {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
+}
+
+/* Input and form elements */
+.App input,
+.App select,
+.App textarea {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--input-border);
+}
+
+.App input:focus,
+.App select:focus,
+.App textarea:focus {
+  border-color: var(--input-focus-border);
+}
+
+/* Buttons with theme awareness */
+.App button {
+  background-color: var(--button-secondary-bg);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.App button:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-focus);
+}
+
+/* Mode buttons active state */
+.App .mode-button.active {
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
+}
+.App {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+/* Enhanced layout for better user experience */
+.App .dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Improved spacing and layout */
+.App .controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .App .controls-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .App .dashboard-content {
+    padding: 1rem;
+  }
+}

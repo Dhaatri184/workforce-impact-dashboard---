@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Test - Workforce Impact Dashboard</title>
+    <style>
+        /* Theme variables */
+        [data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --card-bg: #1a1a1a;
+            --border-color: #333333;
+        }
+        
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #1f2937;
+            --card-bg: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--card-bg);
+            transform: translateY(-2px);
+        }
+        
+        .status-cards {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .status-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .status-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    </style>
+    <script>
+        // Initialize theme
+        const savedTheme = localStorage.getItem('workforce-dashboard-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('workforce-dashboard-theme', newTheme);
+            
+            // Update status
+            document.getElementById('current-theme').textContent = newTheme.charAt(0).toUpperCase() + newTheme.slice(1);
+            console.log('Theme switched to:', newTheme);
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖⚡💼 AI Impact vs Job Market Analysis</h1>
+        <p>Theme Toggle Test Page</p>
+        
+        <button class="theme-toggle" onclick="toggleTheme()">
+            🌙/☀️ Toggle Theme
+        </button>
+        
+        <div class="status-cards">
+            <div class="status-card">
+                <div class="status-label">Current Theme</div>
+                <div class="status-value" id="current-theme">Dark</div>
+            </div>
+            
+            <div class="status-card">
+                <div class="status-label">Selected Role</div>
+                <div class="status-value">👤 Software Engineer</div>
+            </div>
+            
+            <div class="status-card">
+                <div class="status-label">Analysis Period</div>
+                <div class="status-value">📅 Jan 2020 - Dec 2024</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 2rem; opacity: 0.8;">
+            ✅ If you can see this page and the theme toggle works, the new features are ready!<br>
+            🌐 Main app: <a href="http://localhost:5173" style="color: #3b82f6;">http://localhost:5173</a>
+        </p>
+    </div>
+    
+    <script>
+        // Update initial theme display
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        document.getElementById('current-theme').textContent = currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1);
+    </script>
+</body>
+</html>

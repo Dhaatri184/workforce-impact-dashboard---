@@ -1,0 +1,445 @@
+/* Movable Tour Button */
+.movable-tour-button {
+  position: fixed;
+  z-index: 1000;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 200px;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.movable-tour-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.movable-tour-button.dragging {
+  transform: rotate(2deg) scale(1.05);
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.5);
+  cursor: grabbing !important;
+}
+
+.movable-tour-button.minimized {
+  min-width: 60px;
+  max-width: 60px;
+  border-radius: 50%;
+}
+
+/* Drag Handle */
+.drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-dots {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+/* Button Content */
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin-top: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.minimized .button-content {
+  padding: 12px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.tour-icon {
+  font-size: 24px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.tour-icon-mini {
+  font-size: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.tour-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tour-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tour-subtitle {
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Control Buttons */
+.control-buttons {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.movable-tour-button:hover .control-buttons {
+  opacity: 1;
+}
+
+.control-btn {
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.minimize-btn:hover {
+  background: rgba(251, 191, 36, 0.3);
+}
+
+.reset-btn:hover {
+  background: rgba(34, 197, 94, 0.3);
+}
+
+/* Position Indicator */
+.position-indicator {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.movable-tour-button:hover .position-indicator {
+  opacity: 1;
+}
+
+.minimized .position-indicator {
+  display: none;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Floating animation when not being dragged */
+.movable-tour-button:not(.dragging) {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Theme Support */
+[data-theme="light"] .movable-tour-button {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="light"] .movable-tour-button:hover {
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="light"] .drag-handle {
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .position-indicator {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .movable-tour-button {
+    min-width: 180px;
+    max-width: 200px;
+  }
+  
+  .button-content {
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .tour-icon {
+    font-size: 20px;
+  }
+  
+  .tour-title {
+    font-size: 14px;
+  }
+  
+  .tour-subtitle {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movable-tour-button {
+    min-width: 160px;
+    max-width: 180px;
+  }
+  
+  .button-content {
+    padding: 10px;
+  }
+  
+  .tour-icon {
+    font-size: 18px;
+  }
+  
+  .tour-title {
+    font-size: 13px;
+  }
+  
+  .tour-subtitle {
+    font-size: 10px;
+  }
+}
+
+/* Accessibility */
+.movable-tour-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.control-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 1px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .movable-tour-button,
+  .tour-icon,
+  .tour-icon-mini {
+    animation: none;
+  }
+  
+  .movable-tour-button {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .movable-tour-button {
+    border-width: 3px;
+    border-color: white;
+  }
+  
+  .control-btn {
+    border: 1px solid white;
+  }
+}
+
+/* Touch Device Support */
+@media (hover: none) and (pointer: coarse) {
+  .movable-tour-button {
+    cursor: default;
+  }
+  
+  .drag-handle {
+    cursor: default;
+    height: 30px;
+  }
+  
+  .control-buttons {
+    opacity: 1;
+  }
+  
+  .control-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  
+  .position-indicator {
+    opacity: 1;
+  }
+}
+/* Quick Position Menu */
+.quick-positions {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  padding: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.movable-tour-button:hover .quick-positions {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.position-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.position-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.position-btn:hover {
+  background: rgba(59, 130, 246, 0.5);
+  transform: scale(1.1);
+}
+
+/* Enhanced drag feedback */
+.movable-tour-button.dragging .quick-positions {
+  opacity: 1;
+  pointer-events: all;
+  background: rgba(59, 130, 246, 0.9);
+}
+
+.movable-tour-button.dragging .position-btn {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.movable-tour-button.dragging .position-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Snap zones visual feedback */
+.movable-tour-button.dragging::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+    linear-gradient(to left, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+    linear-gradient(to top, rgba(59, 130, 246, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+/* Mobile adjustments for quick positions */
+@media (max-width: 768px) {
+  .quick-positions {
+    bottom: -45px;
+    padding: 6px;
+  }
+  
+  .position-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .quick-positions {
+    opacity: 1;
+    pointer-events: all;
+    bottom: -60px;
+  }
+  
+  .position-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}

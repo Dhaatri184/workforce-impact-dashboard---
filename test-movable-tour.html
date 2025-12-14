@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movable Tour Button Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #8b5cf6 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .demo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .demo-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .demo-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .features-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .features-list h3 {
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+        
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+        
+        /* Movable Tour Button Styles */
+        .movable-tour-button {
+            position: fixed;
+            z-index: 1000;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            user-select: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 200px;
+            max-width: 250px;
+            overflow: hidden;
+            cursor: grab;
+        }
+        
+        .movable-tour-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .movable-tour-button.dragging {
+            transform: rotate(2deg) scale(1.05);
+            box-shadow: 0 16px 48px rgba(59, 130, 246, 0.5);
+            cursor: grabbing !important;
+        }
+        
+        .movable-tour-button.minimized {
+            min-width: 60px;
+            max-width: 60px;
+            border-radius: 50%;
+        }
+        
+        .drag-handle {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .drag-dots {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: -2px;
+        }
+        
+        .button-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .minimized .button-content {
+            padding: 12px;
+            justify-content: center;
+        }
+        
+        .tour-icon {
+            font-size: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .tour-icon-mini {
+            font-size: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .tour-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .tour-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .tour-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+        
+        .control-buttons {
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            display: flex;
+            gap: 2px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .movable-tour-button:hover .control-buttons {
+            opacity: 1;
+        }
+        
+        .control-btn {
+            width: 18px;
+            height: 18px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .position-indicator {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .movable-tour-button:hover .position-indicator {
+            opacity: 1;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .movable-tour-button:not(.dragging) {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-content">
+        <h1>🎯 Movable Tour Button Demo</h1>
+        <p>The tour button is now fully draggable and adjustable for user comfort!</p>
+        
+        <div class="features-list">
+            <h3>✨ New Features:</h3>
+            <ul>
+                <li>🖱️ <strong>Drag & Drop:</strong> Click and drag the tour button anywhere on screen</li>
+                <li>📍 <strong>Position Memory:</strong> Button remembers its position between sessions</li>
+                <li>🔄 <strong>Minimize/Expand:</strong> Click the down arrow to minimize the button</li>
+                <li>🏠 <strong>Reset Position:</strong> Click the house icon to return to default position</li>
+                <li>📱 <strong>Mobile Friendly:</strong> Works great on touch devices</li>
+                <li>🎨 <strong>Theme Aware:</strong> Adapts to light/dark themes</li>
+                <li>♿ <strong>Accessible:</strong> Full keyboard and screen reader support</li>
+            </ul>
+        </div>
+        
+        <p>🌐 <strong>Main Dashboard:</strong> <a href="http://localhost:5173" style="color: #fbbf24;">http://localhost:5173</a></p>
+    </div>
+    
+    <!-- Movable Tour Button -->
+    <div class="movable-tour-button" id="tourButton">
+        <div class="drag-handle">
+            <span class="drag-dots">⋮⋮</span>
+        </div>
+        
+        <div class="button-content" onclick="startTour()">
+            <div class="tour-icon">🎯</div>
+            <div class="tour-text">
+                <span class="tour-title">Take a Tour</span>
+                <span class="tour-subtitle">Learn the dashboard</span>
+            </div>
+        </div>
+        
+        <div class="control-buttons">
+            <button class="control-btn minimize-btn" onclick="toggleMinimize()" title="Minimize">
+                ⬇
+            </button>
+            <button class="control-btn reset-btn" onclick="resetPosition()" title="Reset position">
+                🏠
+            </button>
+        </div>
+        
+        <div class="position-indicator">
+            Drag me anywhere!
+        </div>
+    </div>
+    
+    <script>
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+        let isMinimized = false;
+        
+        const tourButton = document.getElementById('tourButton');
+        
+        // Load saved position
+        const savedPosition = localStorage.getItem('tour-button-position');
+        if (savedPosition) {
+            const pos = JSON.parse(savedPosition);
+            tourButton.style.left = pos.x + 'px';
+            tourButton.style.top = pos.y + 'px';
+        } else {
+            tourButton.style.left = '20px';
+            tourButton.style.top = '20px';
+        }
+        
+        // Drag functionality
+        tourButton.addEventListener('mousedown', (e) => {
+            const rect = tourButton.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            isDragging = true;
+            tourButton.classList.add('dragging');
+            e.preventDefault();
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            const newX = e.clientX - dragOffset.x;
+            const newY = e.clientY - dragOffset.y;
+            
+            const maxX = window.innerWidth - 200;
+            const maxY = window.innerHeight - 80;
+            
+            const finalX = Math.max(0, Math.min(newX, maxX));
+            const finalY = Math.max(0, Math.min(newY, maxY));
+            
+            tourButton.style.left = finalX + 'px';
+            tourButton.style.top = finalY + 'px';
+            
+            // Save position
+            localStorage.setItem('tour-button-position', JSON.stringify({ x: finalX, y: finalY }));
+        });
+        
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                tourButton.classList.remove('dragging');
+            }
+        });
+        
+        function startTour() {
+            if (!isDragging) {
+                alert('🎯 Tour started! This would normally begin the interactive dashboard tour.');
+            }
+        }
+        
+        function toggleMinimize() {
+            isMinimized = !isMinimized;
+            tourButton.classList.toggle('minimized');
+            
+            const minimizeBtn = document.querySelector('.minimize-btn');
+            minimizeBtn.textContent = isMinimized ? '⬆' : '⬇';
+            minimizeBtn.title = isMinimized ? 'Expand' : 'Minimize';
+            
+            // Update content
+            const content = document.querySelector('.button-content');
+            if (isMinimized) {
+                content.innerHTML = '<div class="tour-icon-mini">🎯</div>';
+            } else {
+                content.innerHTML = `
+                    <div class="tour-icon">🎯</div>
+                    <div class="tour-text">
+                        <span class="tour-title">Take a Tour</span>
+                        <span class="tour-subtitle">Learn the dashboard</span>
+                    </div>
+                `;
+            }
+        }
+        
+        function resetPosition() {
+            tourButton.style.left = '20px';
+            tourButton.style.top = '20px';
+            localStorage.setItem('tour-button-position', JSON.stringify({ x: 20, y: 20 }));
+        }
+        
+        // Touch support
+        tourButton.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            const rect = tourButton.getBoundingClientRect();
+            dragOffset.x = touch.clientX - rect.left;
+            dragOffset.y = touch.clientY - rect.top;
+            isDragging = true;
+            tourButton.classList.add('dragging');
+            e.preventDefault();
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const touch = e.touches[0];
+            const newX = touch.clientX - dragOffset.x;
+            const newY = touch.clientY - dragOffset.y;
+            
+            const maxX = window.innerWidth - 200;
+            const maxY = window.innerHeight - 80;
+            
+            const finalX = Math.max(0, Math.min(newX, maxX));
+            const finalY = Math.max(0, Math.min(newY, maxY));
+            
+            tourButton.style.left = finalX + 'px';
+            tourButton.style.top = finalY + 'px';
+            
+            localStorage.setItem('tour-button-position', JSON.stringify({ x: finalX, y: finalY }));
+            e.preventDefault();
+        });
+        
+        document.addEventListener('touchend', () => {
+            if (isDragging) {
+                isDragging = false;
+                tourButton.classList.remove('dragging');
+            }
+        });
+        
+        console.log('🎯 Movable Tour Button loaded! Try dragging it around.');
+    </script>
+</body>
+</html>

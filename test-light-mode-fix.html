@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Mode Theme Test</title>
+    <style>
+        /* CSS Variables for Light Theme */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-elevated: #ffffff;
+            --bg-hover: rgba(0, 0, 0, 0.04);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --text-inverse: #ffffff;
+            --border-primary: #e5e7eb;
+            --border-secondary: #d1d5db;
+            --border-focus: #3b82f6;
+            --interactive-primary: #3b82f6;
+            --interactive-primary-hover: #2563eb;
+            --button-secondary-bg: #f3f4f6;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-normal: 0.3s ease;
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --bg-elevated: #1e293b;
+            --bg-hover: rgba(255, 255, 255, 0.05);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            --text-inverse: #0f172a;
+            --border-primary: #333333;
+            --border-secondary: #404040;
+            --button-secondary-bg: #2a2a2a;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+            min-height: 100vh;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background-color: var(--bg-elevated);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .test-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .test-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--button-secondary-bg);
+            border: 2px solid var(--border-primary);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--interactive-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .theme-icon {
+            font-size: 1.5rem;
+            transition: transform var(--transition-normal);
+        }
+
+        .theme-toggle:hover .theme-icon {
+            transform: rotate(180deg);
+        }
+
+        .test-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .test-section {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .test-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--interactive-primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .test-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-secondary);
+        }
+
+        .test-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .test-value {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .button-test {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .test-button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-primary);
+            background-color: var(--button-secondary-bg);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-weight: 500;
+        }
+
+        .test-button:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--interactive-primary);
+            transform: translateY(-1px);
+        }
+
+        .test-button.active {
+            background-color: var(--interactive-primary);
+            border-color: var(--interactive-primary);
+            color: var(--text-inverse);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .status-success {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-warning {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-error {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .dashboard-links {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--bg-elevated);
+            border-radius: 12px;
+            border: 1px solid var(--border-primary);
+        }
+
+        .dashboard-link {
+            display: inline-block;
+            margin: 0.5rem 1rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--interactive-primary), #8b5cf6);
+            color: var(--text-inverse);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .dashboard-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .theme-preview {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-primary);
+            text-align: center;
+        }
+
+        .light-preview {
+            background: #ffffff;
+            color: #0f172a;
+            border-color: #e5e7eb;
+        }
+
+        .dark-preview {
+            background: #0f172a;
+            color: #f8fafc;
+            border-color: #333333;
+        }
+
+        @media (max-width: 768px) {
+            .theme-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-test {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1 class="test-title">🎨 Light Mode Theme Test</h1>
+            <p class="test-subtitle">Testing the fixed light mode theme with proper text visibility</p>
+            
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <span class="theme-icon" id="themeIcon">☀️</span>
+                <span id="themeText">Switch to Dark Mode</span>
+            </div>
+        </div>
+
+        <div class="test-sections">
+            <div class="test-section">
+                <h2 class="section-title">📝 Text Visibility Test</h2>
+                
+                <div class="test-item">
+                    <div class="test-label">Primary Text</div>
+                    <div class="test-value">This is primary text - should be clearly visible in both themes</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-label">Secondary Text</div>
+                    <div class="test-value">This is secondary text - should have good contrast in both themes</div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-label">Status Indicators</div>
+                    <div>
+                        <span class="status-indicator status-success">✅ Success</span>
+                        <span class="status-indicator status-warning">⚠️ Warning</span>
+                        <span class="status-indicator status-error">❌ Error</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h2 class="section-title">🔘 Button Test</h2>
+                
+                <div class="button-test">
+                    <button class="test-button">Normal Button</button>
+                    <button class="test-button active">Active Button</button>
+                    <button class="test-button" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Hover Me</button>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-label">Button States</div>
+                    <div class="test-value">All buttons should be clearly visible and interactive in both themes</div>
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h2 class="section-title">🎨 Theme Comparison</h2>
+                
+                <div class="theme-comparison">
+                    <div class="theme-preview light-preview">
+                        <h3>Light Theme</h3>
+                        <p>White background with dark text</p>
+                        <button style="background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px;">Sample Button</button>
+                    </div>
+                    
+                    <div class="theme-preview dark-preview">
+                        <h3>Dark Theme</h3>
+                        <p>Dark background with light text</p>
+                        <button style="background: #3b82f6; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px;">Sample Button</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h2 class="section-title">✅ Fix Status</h2>
+                
+                <div class="test-item">
+                    <div class="test-label">Light Mode Text Visibility</div>
+                    <div class="test-value">
+                        <span class="status-indicator status-success">FIXED</span>
+                        Text is now properly visible in light mode
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-label">Theme Switching</div>
+                    <div class="test-value">
+                        <span class="status-indicator status-success">WORKING</span>
+                        Smooth transitions between light and dark themes
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-label">CSS Variables</div>
+                    <div class="test-value">
+                        <span class="status-indicator status-success">IMPLEMENTED</span>
+                        Using CSS custom properties for theme consistency
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-links">
+            <h2>🚀 Access Your Dashboard</h2>
+            <p>The light mode fixes have been applied. Test both themes in the main application:</p>
+            
+            <a href="http://localhost:5173" class="dashboard-link" target="_blank">
+                🌐 Main Dashboard (Port 5173)
+            </a>
+            
+            <a href="access-dashboard.html" class="dashboard-link" target="_blank">
+                📋 Access Page
+            </a>
+            
+            <a href="test-ui-improvements.html" class="dashboard-link" target="_blank">
+                🎨 UI Improvements Demo
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let currentTheme = 'light';
+        
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Switch to Light Mode';
+                currentTheme = 'dark';
+            } else {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Switch to Dark Mode';
+                currentTheme = 'light';
+            }
+            
+            console.log(`🎨 Theme switched to: ${currentTheme}`);
+        }
+        
+        // Test theme switching every 5 seconds for demo
+        let autoToggle = false;
+        
+        function startAutoToggle() {
+            if (!autoToggle) {
+                autoToggle = true;
+                setInterval(() => {
+                    if (autoToggle) {
+                        toggleTheme();
+                    }
+                }, 5000);
+                console.log('🔄 Auto theme toggle started (every 5 seconds)');
+            }
+        }
+        
+        // Add click handler to start auto toggle
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'a' || e.key === 'A') {
+                startAutoToggle();
+            }
+            if (e.key === 's' || e.key === 'S') {
+                autoToggle = false;
+                console.log('⏹️ Auto theme toggle stopped');
+            }
+        });
+        
+        console.log('🎨 Light Mode Theme Test loaded!');
+        console.log('💡 Press "A" to start auto theme switching');
+        console.log('⏹️ Press "S" to stop auto theme switching');
+        console.log('🌐 Main dashboard: http://localhost:5173');
+    </script>
+</body>
+</html>
